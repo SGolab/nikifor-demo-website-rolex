@@ -1,0 +1,57 @@
+{
+  "leftToRight": {
+    "fromVars": {
+      "color": "#f54029",
+      "autoAlpha": 0,
+      "x": "-200px"
+    },
+    "toVars": {
+      "color": "#FAEBD7",
+      "x": 0,
+      "autoAlpha": 1,
+      "duration": 3,
+      "ease": "power3.out"
+    }
+  },
+
+  "rightToLeft": {
+    "fromVars": {
+      "color": "#f54029",
+      "autoAlpha": 0,
+      "x": "200px"
+    },
+    "toVars": {
+      "color": "#FAEBD7",
+      "x": 0,
+      "autoAlpha": 1,
+      "duration": 3,
+      "ease": "power3.out"
+    }
+  },
+
+  "appear": {
+    "fromVars": {
+      "color": "#f54029",
+      "autoAlpha": 0
+    },
+    "toVars": {
+      "color": "#FAEBD7",
+      "autoAlpha": 1,
+      "duration": 3,
+      "ease": "power3.out"
+    }
+  },
+
+  "topToBottom": {
+    "fromVars": {
+      "autoAlpha": 0,
+      "y": "-100px"
+    },
+    "toVars": {
+      "y": 0,
+      "autoAlpha": 1,
+      "duration": 3,
+      "ease": "power3.out"
+    }
+  }
+}

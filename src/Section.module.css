@@ -1,0 +1,15 @@
+.section {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    outline: solid black 1px;
+    outline-offset: -1px;
+}

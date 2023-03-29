@@ -1,0 +1,109 @@
+.sectionsContainer {
+    position: relative;
+
+    height: 100vh;
+    width: 100%;
+
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    background-color: #050203; /*deepblack*/
+}
+
+.sectionsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.section1TextContainer {
+    position: absolute;
+    left: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 500px;
+    overflow: hidden;
+}
+
+.section1TextContainer small {
+    align-self: center;
+    transform: translateX(-25%);
+}
+
+.section1TextContainer h1 {
+    font-size: 6rem;
+    line-height: .85em;
+    margin: 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.section1TextContainer p {
+    font-size: .8rem;
+    width: 200px;
+}
+
+.section2TextContainer {
+    position: absolute;
+    right: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 500px;
+    overflow: hidden;
+}
+
+.section2TextContainer small {
+
+}
+
+.section2TextContainer h1 {
+    font-size: 4rem;
+    line-height: .85em;
+    margin: 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.section2TextContainer p {
+    font-size: .8rem;
+    /*width: 200px;*/
+}
+
+.section3ContentContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+
+    width: 70%;
+
+    overflow: hidden;
+}
+
+.section3ContentContainer .gridTile {
+    display: flex;
+    flex-direction: column;
+}
+
+.section3ContentContainer .gridTile h3 {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.section3ContentContainer .gridTile p {
+    font-size: .8rem;
+}
+
+.section4TextContainer {
+    position: absolute;
+    top: 15%;
+
+    font-size: .8rem;
+    opacity: 50%;
+}
