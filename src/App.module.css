@@ -1,4 +1,18 @@
+.mainContainer {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+}
+
+.sceneContainer {
+    grid-row: 1;
+    grid-column: 1;
+}
+
 .sectionsContainer {
+    grid-row: 1;
+    grid-column: 1;
+
     position: relative;
 
     height: 100vh;
@@ -11,7 +25,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 
-    background-color: #050203; /*deepblack*/
+    /*background-color: #050203; !*deepblack*!*/
 }
 
 .sectionsContainer::-webkit-scrollbar {
@@ -100,10 +114,31 @@
     font-size: .8rem;
 }
 
-.section4TextContainer {
+.section4ContentContainer {
+
+}
+
+.section4ContentContainer .textContainer {
     position: absolute;
     top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
 
     font-size: .8rem;
-    opacity: 50%;
+}
+
+.section4ContentContainer .openPreviewBtn {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: antiquewhite;
+    padding: 10px 30px;
+    border-radius: 10px;
+
+    font-size: .8rem;
+
+    color: black;
+    cursor: pointer;
 }

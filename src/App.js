@@ -6,6 +6,8 @@ import Scene from "./Scene";
 
 function App() {
 
+    const [scrollPercentage, setScrollPercentage] = useState(0);
+
     const section1 = useRef();
     const section2 = useRef();
     const section3 = useRef();
@@ -24,10 +26,17 @@ function App() {
             .then((json) => setAnimations(json));
     }, [])
 
+    const handleOnScroll = function (e) {
+        setScrollPercentage(e.target.scrollTop / (e.target.scrollHeight - e.target.clientHeight))
+    }
+
     return (
-        <>
+        <div className={styles.mainContainer}>
             <SectionPoints refs={[section1, section2, section3, section4, section5]} scrollTo={scrollTo}/>
-            <div className={`gsap-container ${styles.sectionsContainer}`}>
+            <div className={styles.sceneContainer}>
+                <Scene scrollPercentage={scrollPercentage}/>
+            </div>
+            <div className={`gsap-container ${styles.sectionsContainer}`} onScroll={handleOnScroll}>
 
                 <div ref={section1}>
                     <Section animation={animations.appear}>
@@ -86,8 +95,10 @@ function App() {
 
                 <div ref={section4}>
                     <Section animation={animations.appear}>
-                        <Scene/>
-                        <div className={styles.section4TextContainer}>Drag to rotate.</div>
+                        <div className={styles.section4ContentContainer}>
+                            <div className={styles.textContainer}>Drag to rotate.</div>
+                            <div className={styles.openPreviewBtn}>Open preview.</div>
+                        </div>
                     </Section>
                 </div>
 
@@ -96,7 +107,7 @@ function App() {
                     </Section>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
