@@ -1,9 +1,56 @@
-import {Canvas, useThree} from "@react-three/fiber";
+import {Canvas, useFrame, useThree} from "@react-three/fiber";
 import {CameraShake, Html, OrbitControls, Sparkles, SpotLight} from '@react-three/drei'
 import RolexTransformed from "./RolexTransformed";
 import {useEffect, useRef, useState} from "react";
+import * as THREE from 'three'
 
 function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveMode}) {
+
+    return (
+        <Canvas shadows camera={{position: [0, 0, 3]}} style={{zIndex: (interactiveMode ? '100' : '0')}}>
+            <color attach="background" args={['#050203']}/>
+
+            <pointLight
+                position={[-2, 10, 3]}
+            />
+
+            <ambientLight/>
+
+            <OrbitControls makeDefault
+                           enablePan={false}
+                           zoomSpeed={0.5}
+                           minDistance={1}
+                           maxDistance={5}
+            />
+
+            <RolexDisplay scrollPercentage={scrollPercentage} interactiveMode={interactiveMode}/>
+
+            <Sparkles
+                scale={15}
+                amount={100}
+                position={[0, 0, -2]}
+                size={2}
+                color={'#f54029'}/>
+        </Canvas>
+    )
+}
+
+function RolexDisplay({scrollPercentage, interactiveMode}) {
+
+    const sectionIndex = useRef()
+
+    useEffect(() => {
+        
+    }, [scrollPercentage])
+
+    useFrame(state => { //makes sure the camera returns to initial position when interactive mode turns off
+        if (!interactiveMode) {
+            state.camera.position.lerp(new THREE.Vector3(0, 0, 3), 0.2)
+            state.camera.updateProjectionMatrix()
+        }
+
+        return null
+    })
 
     const getRolexPosition = function () {
         const positions =
@@ -15,7 +62,7 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
                 {x: 0, y: 10, z: 0}
             ]
 
-        let index = Math.floor((scrollPercentage - 0.000001) * 4)
+        let index = Math.floor((scrollPercentage - 0.001) * 4)
         if (index < 0) {
             index = 0
         }
@@ -42,7 +89,7 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
                 {x: 0, y: (-Math.PI / 2), z: 0}
             ]
 
-        let index = Math.floor((scrollPercentage - 0.000001) * 4)
+        let index = Math.floor((scrollPercentage - 0.001) * 4)
         if (index < 0) {
             index = 0
         }
@@ -72,7 +119,7 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
             0.4
         ]
 
-        let index = Math.floor((scrollPercentage - 0.000001) * 4)
+        let index = Math.floor((scrollPercentage - 0.001) * 4)
         if (index < 0) {
             index = 0
         }
@@ -85,50 +132,11 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
         return startScale + (endScale - startScale) * relativeCompleteness
     }
 
-    const controlsRef = useRef(null)
-
-    useEffect(() => {
-        if (!controlsRef.current) return;
-
-        if (interactiveMode) {
-            controlsRef.current.enabled = true;
-        } else {
-            controlsRef.current.enabled = false;
-        }
-
-        const camera = controlsRef.current.object;
-        camera.rotation.set(0, 0, 0)
-        camera.position.set(0, 0, 3)
-        camera.zoom = 1
-
-    }, [interactiveMode])
-
     return (
-        <Canvas shadows camera={{position: [0, 0, 3]}} style={{zIndex: (interactiveMode ? '100' : '0')}}>
-            <color attach="background" args={['#050203']}/>
-
-            <pointLight
-                position={[-2, 10, 3]}
-            />
-
-            <ambientLight/>
-
-            <OrbitControls ref={controlsRef} makeDefault enablePan={false} dampingFactor={0.5} zoomSpeed={0.5} maxZoom={1}/>
-
-            <RolexTransformed
-                position={getRolexPosition()}
-                scale={getRolexScale()}
-                rotation={getRolexRotation()}/>
-
-            {/*{interactiveMode &&*/}
-                <Sparkles
-                    scale={15}
-                    amount={100}
-                    position={[0, 0, -2]}
-                    size={2}
-                    color={'#f54029'}/>
-            {/*}*/}
-        </Canvas>
+        <RolexTransformed
+            position={getRolexPosition()}
+            scale={getRolexScale()}
+            rotation={getRolexRotation()}/>
     )
 }
 

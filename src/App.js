@@ -80,7 +80,7 @@ function App() {
 
     return (
         <div className={styles.mainContainer}
-             // onPointerDown={handlePointerDown}
+            // onPointerDown={handlePointerDown}
         >
             <SectionPoints refs={[section1, section2, section3, section4, section5]} scrollTo={scrollTo}/>
             <div className={styles.sceneContainer}>
@@ -155,7 +155,6 @@ function App() {
                 <div ref={section4}>
                     <Section animation={animations.appear}>
                         <div className={styles.section4ContentContainer}>
-                            <div className={styles.textContainer}>Drag to rotate.</div>
                             <div
                                 className={styles.openPreviewBtn}
                                 // onClick={() => setIsDragEnabled(prevState => !prevState)}
@@ -163,13 +162,19 @@ function App() {
                             >
                                 Interactive mode.
                             </div>
+
                             {interactiveMode &&
-                                <div className={styles.openPreviewBtn}
-                                     style={{zIndex: 101}}
-                                     onClick={() => setInteractiveMode(false)}
-                                >
-                                    Exit interactive mode
-                                </div>
+                                <>
+                                    <div className={styles.textContainer} style={{zIndex: 101}}>
+                                        Drag to rotate.
+                                    </div>
+
+                                    <div className={styles.openPreviewBtn}
+                                         style={{zIndex: 101}}
+                                         onClick={() => setInteractiveMode(false)}>
+                                        Exit interactive mode
+                                    </div>
+                                </>
                             }
                         </div>
                     </Section>
