@@ -11,7 +11,8 @@ export default function Section(props) {
 
     useEffect(() => {
         gsap.fromTo(
-            sectionRef.current.children,
+            // sectionRef.current.children,
+            Array.from(sectionRef.current.children).flatMap(child => child.children),
             props.animation?.fromVars,
             {
                 ...props.animation?.toVars,
