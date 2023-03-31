@@ -103,10 +103,6 @@ export default function Sections({
 
                         {interactiveMode &&
                             <>
-                                <div className={styles.textContainer} style={{zIndex: 101}}>
-                                    Drag to rotate.
-                                </div>
-
                                 <div className={styles.openPreviewBtn}
                                      style={{zIndex: 101}}
                                      onClick={() => setInteractiveMode(false)}>
@@ -121,8 +117,8 @@ export default function Sections({
             <div ref={section5}>
                 <Section animation={animations.appear}>
                     <div className={styles.section5ContentContainer}>
-                        <img src={'./rolex-photo-1.jpg'} alt={'rolex-photo-1'}/>
-                        <img src={'/rolex-photo-2.jpg'} alt={'rolex-photo-2'}/>
+                        <img src={'/photos/rolex-photo-1.jpg'} alt={'rolex-photo-1'}/>
+                        <img src={'/photos/rolex-photo-2.jpg'} alt={'rolex-photo-2'}/>
                     </div>
                 </Section>
             </div>

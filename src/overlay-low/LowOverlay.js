@@ -13,11 +13,12 @@ export default function LowOverlay({
                                        section2,
                                        section3,
                                        section4,
-                                       section5
+                                       section5,
+                                       setTransformX
                                    }) {
     return (
         <>
-            <HoverPoints scrollPercentage={scrollPercentage}/>
+            <HoverPoints scrollPercentage={scrollPercentage} setTransformX={setTransformX}/>
 
             {enableScroll &&
                 <SectionPoints refs={[section1, section2, section3, section4, section5]}

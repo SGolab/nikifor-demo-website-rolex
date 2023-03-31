@@ -36,7 +36,7 @@ function App() {
 
             <div className={styles.mainContainer}>
 
-                <Underlay/>
+                <Underlay sectionIndex={sectionIndex} setTransformX={setTransformX}/>
                 <HighOverlay transformX={transformX} setTransformX={setTransformX}/>
 
                 <TransformableByX transformX={transformX}>
@@ -59,6 +59,7 @@ function App() {
                         section3={section3}
                         section4={section4}
                         section5={section5}
+                        setTransformX={setTransformX}
                     />
 
                 </TransformableByX>
