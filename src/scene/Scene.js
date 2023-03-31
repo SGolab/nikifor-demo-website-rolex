@@ -3,36 +3,39 @@ import {CameraShake, Html, OrbitControls, Sparkles, SpotLight} from '@react-thre
 import RolexTransformed from "./RolexTransformed";
 import {useEffect, useRef, useState} from "react";
 import * as THREE from 'three'
+import styles from "../App.module.css";
 
 function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveMode}) {
 
     return (
-        <Canvas shadows camera={{position: [0, 0, 3]}} style={{zIndex: (interactiveMode ? '100' : '0')}}>
-            <color attach="background" args={['#050203']}/>
+        <div className={styles.sceneContainer}>
+            <Canvas shadows camera={{position: [0, 0, 3]}} style={{zIndex: (interactiveMode ? '100' : '0')}}>
+                <color attach="background" args={['#050203']}/>
 
-            <pointLight
-                position={[-2, 10, 3]}
-            />
+                <pointLight
+                    position={[-2, 10, 3]}
+                />
 
-            <ambientLight/>
+                <ambientLight/>
 
-            <OrbitControls makeDefault
-                           enablePan={false}
-                           zoomSpeed={0.5}
-                           dampingFactor={0.4}
-                           minDistance={1}
-                           maxDistance={5}
-            />
+                <OrbitControls makeDefault
+                               enablePan={false}
+                               zoomSpeed={0.5}
+                               dampingFactor={0.4}
+                               minDistance={1}
+                               maxDistance={5}
+                />
 
-            <RolexDisplay scrollPercentage={scrollPercentage} interactiveMode={interactiveMode}/>
+                <RolexDisplay scrollPercentage={scrollPercentage} interactiveMode={interactiveMode}/>
 
-            <Sparkles
-                scale={15}
-                amount={100}
-                position={[0, 0, -2]}
-                size={2}
-                color={'#f54029'}/>
-        </Canvas>
+                <Sparkles
+                    scale={15}
+                    amount={100}
+                    position={[0, 0, -2]}
+                    size={2}
+                    color={'#f54029'}/>
+            </Canvas>
+        </div>
     )
 }
 

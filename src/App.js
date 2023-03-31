@@ -1,19 +1,29 @@
 import styles from './App.module.css';
-import Section from "./Section";
-import {useEffect, useRef, useState, Suspense} from "react";
-import SectionPoints from "./SectionPoints";
-import Scene from "./Scene";
+import {Suspense, useEffect, useRef, useState} from "react";
+import Scene from "./scene/Scene";
 import LoadingScreen from "./LoadingScreen";
-import Sections from "./Sections";
-import HoverPoints from "./HoverPoints";
+import HighOverlay from "./overlay-high/HighOverlay";
+import Underlay from "./underlay/Underlay";
+import TransformableByX from "./TransformableByX";
+import LowOverlay from "./overlay-low/LowOverlay";
 
 function App() {
 
-    // const [isDragEnabled, setIsDragEnabled] = useState(false);
+    const [transformX, setTransformX] = useState(0);
     const [interactiveMode, setInteractiveMode] = useState(false);
 
     const [scrollPercentage, setScrollPercentage] = useState(0);
-    // const [dragDistance, setDragDistance] = useState({deltaX: 0, deltaY: 0})
+    const [sectionIndex, setSectionIndex] = useState(0)
+
+    const NUMBER_OF_SECTIONS = 5;
+
+    useEffect(() => {
+        let index = Math.floor((scrollPercentage) * NUMBER_OF_SECTIONS)
+        index = (index >= NUMBER_OF_SECTIONS ? NUMBER_OF_SECTIONS - 1 : index);
+
+        setSectionIndex(index)
+
+    }, [scrollPercentage])
 
     const section1 = useRef();
     const section2 = useRef();
@@ -26,43 +36,30 @@ function App() {
 
             <div className={styles.mainContainer}>
 
-                <div className={styles.topOverlay}>
-                    <div className={styles.btnContainer}>
-                        <div className={styles.btn}>
-                            <img src={'./icons/buy-btn.png'} alt={'buy-btn'}/>
-                        </div>
-                        <div className={styles.btn}>
-                            <img src={'./icons/menu-btn.png'} alt={'menu-btn'}/>
-                        </div>
-                    </div>
-                </div>
+                <Underlay/>
+                <HighOverlay transformX={transformX} setTransformX={setTransformX}/>
 
-                <HoverPoints scrollPercentage={scrollPercentage}/>
+                <TransformableByX transformX={transformX}>
 
-                <SectionPoints refs={[section1, section2, section3, section4, section5]}/>
-
-                <div className={styles.sceneContainer}>
                     <Scene
                         scrollPercentage={scrollPercentage}
                         interactiveMode={interactiveMode}
                         setInteractiveMode={setInteractiveMode}
                     />
-                </div>
 
-                <Sections
-                    setScrollPercentage={setScrollPercentage}
-                    interactiveMode={interactiveMode}
-                    setInteractiveMode={setInteractiveMode}
-                    section1={section1}
-                    section2={section2}
-                    section3={section3}
-                    section4={section4}
-                    section5={section5}
-                />
+                    <LowOverlay scrollPercentage={scrollPercentage} setScrollPercentage={setScrollPercentage}
+                                interactiveMode={interactiveMode} setInteractiveMode={setInteractiveMode}
+                                sectionIndex={sectionIndex}
+                                section1={section1}
+                                section2={section2}
+                                section3={section3}
+                                section4={section4}
+                                section5={section5}
+                    />
 
+                </TransformableByX>
             </div>
         </Suspense>
-
     );
 }
 

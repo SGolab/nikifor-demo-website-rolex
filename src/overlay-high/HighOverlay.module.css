@@ -1,0 +1,43 @@
+.highOverlay {
+    z-index: 200;
+    grid-row: 1;
+    grid-column: 1;
+
+    width: 0;
+    height: 0;
+    overflow: visible;
+}
+
+.highOverlay .btnContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    padding: 10px 40px;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    background-color: #050203;
+}
+
+.highOverlay .btn {
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.highOverlay .btn img {
+    height: 30px;
+    filter: invert(86%) sepia(20%) saturate(283%) hue-rotate(337deg) brightness(107%) contrast(96%);
+    transition: filter .1s;
+}
+
+.highOverlay .btn:hover img {
+    filter: invert(27%) sepia(76%) saturate(2272%) hue-rotate(348deg) brightness(75%) contrast(92%);
+
+}

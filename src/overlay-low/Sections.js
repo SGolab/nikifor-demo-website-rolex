@@ -1,8 +1,17 @@
-import styles from "./App.module.css";
+import styles from "./LowOverlay.module.css";
 import Section from "./Section";
 import {useEffect, useState} from "react";
 
-export default function Sections({setScrollPercentage,interactiveMode, setInteractiveMode, section1, section2, section3, section4, section5}) {
+export default function Sections({
+                                     setScrollPercentage,
+                                     interactiveMode,
+                                     setInteractiveMode,
+                                     section1,
+                                     section2,
+                                     section3,
+                                     section4,
+                                     section5
+                                 }) {
 
     const [animations, setAnimations] = useState({})
 
@@ -18,8 +27,8 @@ export default function Sections({setScrollPercentage,interactiveMode, setIntera
 
     return (
         <div
-            className={`gsap-container ${styles.sectionsContainer}`}
-            onScroll={handleOnScroll}
+             className={`gsap-container ${styles.sectionsContainer}`}
+             onScroll={handleOnScroll}
         >
 
             <div ref={section1}>

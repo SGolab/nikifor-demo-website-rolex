@@ -1,5 +1,4 @@
 import styles from './HoverPoints.module.css'
-import {useState} from "react";
 
 export default function HoverPoints({scrollPercentage}) {
 
