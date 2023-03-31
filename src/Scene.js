@@ -19,6 +19,7 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
             <OrbitControls makeDefault
                            enablePan={false}
                            zoomSpeed={0.5}
+                           dampingFactor={0.4}
                            minDistance={1}
                            maxDistance={5}
             />
@@ -37,12 +38,6 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
 
 function RolexDisplay({scrollPercentage, interactiveMode}) {
 
-    const sectionIndex = useRef()
-
-    useEffect(() => {
-        
-    }, [scrollPercentage])
-
     useFrame(state => { //makes sure the camera returns to initial position when interactive mode turns off
         if (!interactiveMode) {
             state.camera.position.lerp(new THREE.Vector3(0, 0, 3), 0.2)
@@ -59,7 +54,7 @@ function RolexDisplay({scrollPercentage, interactiveMode}) {
                 {x: -1, y: -1.75, z: 0},
                 {x: 2.5, y: 0, z: 1},
                 {x: 0, y: -1, z: 0},
-                {x: 0, y: 10, z: 0}
+                {x: 0, y: 6, z: 0}
             ]
 
         let index = Math.floor((scrollPercentage - 0.001) * 4)
@@ -128,7 +123,6 @@ function RolexDisplay({scrollPercentage, interactiveMode}) {
         const endScale = scales[index + 1]
         const relativeCompleteness = (scrollPercentage - index * (1 / (scales.length - 1))) * (scales.length - 1) //should be between 0 and 1
 
-        // return startRotation + scrollPercentage * 2 * Math.PI
         return startScale + (endScale - startScale) * relativeCompleteness
     }
 
