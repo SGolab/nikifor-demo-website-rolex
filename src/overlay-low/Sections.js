@@ -3,6 +3,7 @@ import Section from "./Section";
 import {useEffect, useState} from "react";
 
 export default function Sections({
+                                     enableScroll,
                                      setScrollPercentage,
                                      interactiveMode,
                                      setInteractiveMode,
@@ -27,8 +28,9 @@ export default function Sections({
 
     return (
         <div
-             className={`gsap-container ${styles.sectionsContainer}`}
-             onScroll={handleOnScroll}
+            className={`gsap-container ${styles.sectionsContainer}`}
+            style={{overflow: (enableScroll ? 'auto' : 'hidden')}}
+            onScroll={handleOnScroll}
         >
 
             <div ref={section1}>

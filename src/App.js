@@ -47,14 +47,18 @@ function App() {
                         setInteractiveMode={setInteractiveMode}
                     />
 
-                    <LowOverlay scrollPercentage={scrollPercentage} setScrollPercentage={setScrollPercentage}
-                                interactiveMode={interactiveMode} setInteractiveMode={setInteractiveMode}
-                                sectionIndex={sectionIndex}
-                                section1={section1}
-                                section2={section2}
-                                section3={section3}
-                                section4={section4}
-                                section5={section5}
+                    <LowOverlay
+                        enableScroll={transformX === 0 && !interactiveMode}
+                        scrollPercentage={scrollPercentage}
+                        setScrollPercentage={setScrollPercentage}
+                        interactiveMode={interactiveMode}
+                        setInteractiveMode={setInteractiveMode}
+                        sectionIndex={sectionIndex}
+                        section1={section1}
+                        section2={section2}
+                        section3={section3}
+                        section4={section4}
+                        section5={section5}
                     />
 
                 </TransformableByX>

@@ -3,6 +3,7 @@ import SectionPoints from "./SectionPoints";
 import Sections from "./Sections";
 
 export default function LowOverlay({
+                                       enableScroll,
                                        scrollPercentage,
                                        setScrollPercentage,
                                        interactiveMode,
@@ -18,10 +19,13 @@ export default function LowOverlay({
         <>
             <HoverPoints scrollPercentage={scrollPercentage}/>
 
-            <SectionPoints refs={[section1, section2, section3, section4, section5]}
-                           currentSectionIndex={sectionIndex}/>
+            {enableScroll &&
+                <SectionPoints refs={[section1, section2, section3, section4, section5]}
+                               currentSectionIndex={sectionIndex}/>
+            }
 
             <Sections
+                enableScroll={enableScroll}
                 setScrollPercentage={setScrollPercentage}
                 interactiveMode={interactiveMode}
                 setInteractiveMode={setInteractiveMode}
