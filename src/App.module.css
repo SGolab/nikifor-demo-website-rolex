@@ -40,10 +40,12 @@
 .topOverlay .btn img {
     height: 30px;
     filter: invert(86%) sepia(20%) saturate(283%) hue-rotate(337deg) brightness(107%) contrast(96%);
+    transition: filter .1s;
 }
 
 .topOverlay .btn:hover img {
     filter: invert(27%) sepia(76%) saturate(2272%) hue-rotate(348deg) brightness(75%) contrast(92%);
+
 }
 
 .sceneContainer {

@@ -5,6 +5,7 @@ import SectionPoints from "./SectionPoints";
 import Scene from "./Scene";
 import LoadingScreen from "./LoadingScreen";
 import Sections from "./Sections";
+import HoverPoints from "./HoverPoints";
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
                         </div>
                     </div>
                 </div>
+
+                <HoverPoints scrollPercentage={scrollPercentage}/>
 
                 <SectionPoints refs={[section1, section2, section3, section4, section5]}/>
 

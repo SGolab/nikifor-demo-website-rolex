@@ -1,0 +1,68 @@
+.hoverPoint {
+    z-index: 101;
+
+    position: absolute;
+    left: 20.5%;
+    top: 48%;
+    transform: translateY(-50%);
+
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+
+    transition: .2s;
+
+    outline: solid antiquewhite 5px;
+}
+
+.hoverPoint:hover {
+    background-color: antiquewhite;
+}
+
+.textDialog {
+    position: absolute;
+    top: 120%;
+    left: 100%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+    /*height: 100px;*/
+    padding: 10px;
+    border-radius: 3px;
+
+    /*overflow: auto;*/
+
+    background-color: rgba(255,255,255, 0.85);
+
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+.hoverPoint:hover .textDialog {
+    opacity: 1;
+}
+
+.textDialog h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.textDialog .redLine {
+    align-self: center;
+    width: 80%;
+    height: 1.5px;
+    background-color: #f54029;
+
+    margin: 10px 0;
+}
+
+.textDialog p {
+    margin: 0;
+
+    text-align: justify;
+
+    font-size: .8rem;
+}
