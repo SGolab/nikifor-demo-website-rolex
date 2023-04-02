@@ -31,6 +31,15 @@ function App() {
     const section4 = useRef();
     const section5 = useRef();
 
+    const [detailPointPositions, setDetailPointPositions] = useState([
+        {x: 0, y: 0},
+        {x: 200, y: 200},
+    ])
+
+    // useEffect(() => {
+    //     console.log(detailPointPosition)
+    // }, [detailPointPosition])
+
     return (
         <Suspense fallback={<LoadingScreen/>}>
 
@@ -45,6 +54,7 @@ function App() {
                         scrollPercentage={scrollPercentage}
                         interactiveMode={interactiveMode}
                         setInteractiveMode={setInteractiveMode}
+                        setDetailPointPositions={setDetailPointPositions}
                     />
 
                     <LowOverlay
@@ -60,6 +70,7 @@ function App() {
                         section4={section4}
                         section5={section5}
                         setTransformX={setTransformX}
+                        detailPointPositions={detailPointPositions}
                     />
 
                 </TransformableByX>

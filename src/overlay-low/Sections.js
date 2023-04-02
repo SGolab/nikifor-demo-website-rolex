@@ -106,7 +106,7 @@ export default function Sections({
                                 <div className={styles.openPreviewBtn}
                                      style={{zIndex: 101}}
                                      onClick={() => setInteractiveMode(false)}>
-                                    Exit interactive mode
+                                    Exit interactive mode.
                                 </div>
                             </>
                         }

@@ -1,0 +1,38 @@
+.detailPointHoverArea {
+    z-index: 101;
+
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+
+    width: 250px;
+    height: 250px;
+    border-radius: 125px;
+
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailPointHoverArea:hover .detailPoint {
+    opacity: 1;
+}
+
+.detailPoint {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+
+    outline: solid antiquewhite 5px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition: .2s;
+}
+
+.detailPoint:hover {
+    background-color: antiquewhite;
+}

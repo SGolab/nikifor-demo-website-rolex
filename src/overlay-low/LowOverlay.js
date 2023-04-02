@@ -1,6 +1,7 @@
-import HoverPoints from "./HoverPoints";
+import DetailPoint from "./DetailPoint";
 import SectionPoints from "./SectionPoints";
 import Sections from "./Sections";
+import DetailPoints from "./DetailPoints";
 
 export default function LowOverlay({
                                        enableScroll,
@@ -14,11 +15,16 @@ export default function LowOverlay({
                                        section3,
                                        section4,
                                        section5,
-                                       setTransformX
+                                       setTransformX,
+                                       detailPointPositions
                                    }) {
     return (
         <>
-            <HoverPoints scrollPercentage={scrollPercentage} setTransformX={setTransformX}/>
+
+            <DetailPoints detailPointPositions={detailPointPositions}
+                          scrollPercentage={scrollPercentage}
+                          setTransformX={setTransformX}
+            />
 
             {enableScroll &&
                 <SectionPoints refs={[section1, section2, section3, section4, section5]}

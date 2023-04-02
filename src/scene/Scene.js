@@ -1,11 +1,10 @@
 import {Canvas, useFrame, useThree} from "@react-three/fiber";
-import {CameraShake, Html, OrbitControls, Sparkles, SpotLight} from '@react-three/drei'
-import RolexTransformed from "./RolexTransformed";
-import {useEffect, useRef, useState} from "react";
+import {OrbitControls, Sparkles} from '@react-three/drei'
+import RolexTransformed from "./objects/RolexTransformed";
 import * as THREE from 'three'
 import styles from "../App.module.css";
 
-function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveMode}) {
+function Scene({scrollPercentage, interactiveMode, setDetailPointPositions}) {
 
     return (
         <div className={styles.sceneContainer}>
@@ -26,7 +25,11 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
                                maxDistance={5}
                 />
 
-                <RolexDisplay scrollPercentage={scrollPercentage} interactiveMode={interactiveMode}/>
+                <RolexDisplay
+                    scrollPercentage={scrollPercentage}
+                    interactiveMode={interactiveMode}
+                    setDetailPointPositions={setDetailPointPositions}
+                />
 
                 <Sparkles
                     scale={15}
@@ -39,7 +42,7 @@ function Scene({scrollPercentage, dragDistance, interactiveMode, setInteractiveM
     )
 }
 
-function RolexDisplay({scrollPercentage, interactiveMode}) {
+function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPositions}) {
 
     useFrame(state => { //makes sure the camera returns to initial position when interactive mode turns off
         if (!interactiveMode) {
@@ -133,7 +136,11 @@ function RolexDisplay({scrollPercentage, interactiveMode}) {
         <RolexTransformed
             position={getRolexPosition()}
             scale={getRolexScale()}
-            rotation={getRolexRotation()}/>
+            rotation={getRolexRotation()}
+            interactiveMode={interactiveMode}
+            scrollPercentage={scrollPercentage}
+            setDetailPointPositions={setDetailPointPositions}
+        />
     )
 }
 
