@@ -11,9 +11,9 @@ export default function Underlay({topicName, setTransformX}) {
 
     return (
         <div className={styles.underlay}>
+
             <div className={styles.exitBtn} onClick={() => {
                 setTransformX(0)
-
             }}>
                 <img src={'/icons/x-icon.png'} alt={'exit'}/>
             </div>

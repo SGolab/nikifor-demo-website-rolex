@@ -4,7 +4,9 @@
     grid-template-columns: 1fr;
 }
 
-.moveable {
+.transformableByX {
+    position: relative;
+
     grid-row: 1;
     grid-column: 1;
 
@@ -13,6 +15,20 @@
     grid-template-columns: 1fr;
 
     transition: transform .5s;
+}
+
+.blurRightSide {
+    position: absolute;
+    right: 0;
+    transform: translateX(50%);
+
+    /*background-color: red;*/
+    backdrop-filter: blur(5px);
+
+    height: 100%;
+    width: 8px;
+
+    z-index: 10000;
 }
 
 .sceneContainer {

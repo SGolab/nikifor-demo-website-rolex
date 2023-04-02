@@ -18,7 +18,7 @@
 
 .exitBtn {
     position: absolute;
-    left: 10px;
+    left: 14px;
     top: 10px;
 
     cursor: pointer;
@@ -38,6 +38,7 @@
 
 .section1ContentContainer img {
     width: 100%;
+    filter: drop-shadow(10px 10px 10px #222);
 }
 
 .section1ContentContainer h1 {
