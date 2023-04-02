@@ -15,7 +15,7 @@ export default function LowOverlay({
                                        section3,
                                        section4,
                                        section5,
-                                       setTransformX,
+                                       setUnderlayTopic,
                                        detailPointPositions
                                    }) {
     return (
@@ -23,7 +23,7 @@ export default function LowOverlay({
 
             <DetailPoints detailPointPositions={detailPointPositions}
                           scrollPercentage={scrollPercentage}
-                          setTransformX={setTransformX}
+                          setUnderlayTopic={setUnderlayTopic}
             />
 
             {enableScroll &&

@@ -1,6 +1,6 @@
 import styles from './DetailPoint.module.css'
 
-export default function DetailPoint({detailPointPosition, setTransformX}) {
+export default function DetailPoint({detailPointPosition, setUnderlayTopic}) {
 
     return (
         <div className={styles.detailPointHoverArea}
@@ -10,7 +10,9 @@ export default function DetailPoint({detailPointPosition, setTransformX}) {
              }}>
             <div
                 className={styles.detailPoint}
-                onClick={() => setTransformX(-30)}
+                onClick={() => {
+                    setUnderlayTopic('bezel')
+                }}
             />
         </div>
     )

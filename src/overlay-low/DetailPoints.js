@@ -1,6 +1,6 @@
 import DetailPoint from "./DetailPoint";
 
-export default function DetailPoints({detailPointPositions, setTransformX, scrollPercentage}) {
+export default function DetailPoints({detailPointPositions, setUnderlayTopic, scrollPercentage}) {
     return (
         <>
             {(scrollPercentage > 0.249 && scrollPercentage < 0.251) &&
@@ -8,7 +8,9 @@ export default function DetailPoints({detailPointPositions, setTransformX, scrol
                     {detailPointPositions.map(dpp =>
                         <DetailPoint
                             detailPointPosition={dpp}
-                            setTransformX={setTransformX}/>)}
+                            setUnderlayTopic={setUnderlayTopic}
+                        />
+                    )}
                 </>
             }
         </>

@@ -15,6 +15,16 @@ function App() {
     const [scrollPercentage, setScrollPercentage] = useState(0);
     const [sectionIndex, setSectionIndex] = useState(0)
 
+    const [underlayTopic, setUnderlayTopicActual] = useState('');
+
+    const setUnderlayTopic = function (topic) { //forces react to run useEffect hooks dependent on underlayTopic state even when it is set to the same value
+        if (underlayTopic.endsWith(' ')) {
+            setUnderlayTopicActual(topic)
+        } else {
+            setUnderlayTopicActual(topic + ' ')
+        }
+    }
+
     const NUMBER_OF_SECTIONS = 5;
 
     useEffect(() => {
@@ -36,16 +46,12 @@ function App() {
         {x: 200, y: 200},
     ])
 
-    // useEffect(() => {
-    //     console.log(detailPointPosition)
-    // }, [detailPointPosition])
-
     return (
         <Suspense fallback={<LoadingScreen/>}>
 
             <div className={styles.mainContainer}>
 
-                <Underlay sectionIndex={sectionIndex} setTransformX={setTransformX}/>
+                <Underlay topicName={underlayTopic} sectionIndex={sectionIndex} setTransformX={setTransformX}/>
                 <HighOverlay transformX={transformX} setTransformX={setTransformX}/>
 
                 <TransformableByX transformX={transformX}>
@@ -55,6 +61,7 @@ function App() {
                         interactiveMode={interactiveMode}
                         setInteractiveMode={setInteractiveMode}
                         setDetailPointPositions={setDetailPointPositions}
+                        setUnderlayTopic={setUnderlayTopic}
                     />
 
                     <LowOverlay
@@ -69,7 +76,7 @@ function App() {
                         section3={section3}
                         section4={section4}
                         section5={section5}
-                        setTransformX={setTransformX}
+                        setUnderlayTopic={setUnderlayTopic}
                         detailPointPositions={detailPointPositions}
                     />
 

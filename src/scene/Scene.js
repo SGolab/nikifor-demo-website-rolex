@@ -4,7 +4,7 @@ import RolexTransformed from "./objects/RolexTransformed";
 import * as THREE from 'three'
 import styles from "../App.module.css";
 
-function Scene({scrollPercentage, interactiveMode, setDetailPointPositions}) {
+function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic}) {
 
     return (
         <div className={styles.sceneContainer}>
@@ -29,6 +29,7 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions}) {
                     scrollPercentage={scrollPercentage}
                     interactiveMode={interactiveMode}
                     setDetailPointPositions={setDetailPointPositions}
+                    setUnderlayTopic={setUnderlayTopic}
                 />
 
                 <Sparkles
@@ -42,7 +43,7 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions}) {
     )
 }
 
-function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPositions}) {
+function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic}) {
 
     useFrame(state => { //makes sure the camera returns to initial position when interactive mode turns off
         if (!interactiveMode) {
@@ -140,6 +141,7 @@ function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPosition
             interactiveMode={interactiveMode}
             scrollPercentage={scrollPercentage}
             setDetailPointPositions={setDetailPointPositions}
+            setUnderlayTopic={setUnderlayTopic}
         />
     )
 }
