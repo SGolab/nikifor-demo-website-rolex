@@ -7,11 +7,7 @@ export default function Sections({
                                      setScrollPercentage,
                                      interactiveMode,
                                      setInteractiveMode,
-                                     section1,
-                                     section2,
-                                     section3,
-                                     section4,
-                                     section5
+                                     sectionRefList
                                  }) {
 
     const [animations, setAnimations] = useState({})
@@ -33,7 +29,7 @@ export default function Sections({
             onScroll={handleOnScroll}
         >
 
-            <div ref={section1}>
+            <div ref={sectionRefList[0]}>
                 <Section animation={animations.appearAndColor}>
                     <div className={styles.section1TextContainer}>
                         <small>Introducing new generation of the</small>
@@ -45,7 +41,7 @@ export default function Sections({
                 </Section>
             </div>
 
-            <div ref={section2}>
+            <div ref={sectionRefList[1]}>
                 <Section animation={animations.appearAndColor}>
                     <div className={styles.section2TextContainer}>
                         <small>The Oyster bracelet</small>
@@ -62,7 +58,7 @@ export default function Sections({
                 </Section>
             </div>
 
-            <div ref={section3}>
+            <div ref={sectionRefList[2]}>
                 <Section animation={animations.appearAndColor}>
                     <div className={styles.section3ContentContainer}>
                         <div className={styles.gridTile}>
@@ -90,7 +86,7 @@ export default function Sections({
                 </Section>
             </div>
 
-            <div ref={section4}>
+            <div ref={sectionRefList[3]}>
                 <Section animation={animations.appear}>
                     <div className={styles.section4ContentContainer}>
                         <div
@@ -114,7 +110,7 @@ export default function Sections({
                 </Section>
             </div>
 
-            <div ref={section5}>
+            <div ref={sectionRefList[4]}>
                 <Section animation={animations.appear}>
                     <div className={styles.section5ContentContainer}>
                         <img src={'/photos/rolex-photo-1.jpg'} alt={'rolex-photo-1'}/>

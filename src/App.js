@@ -41,10 +41,9 @@ function App() {
     const section4 = useRef();
     const section5 = useRef();
 
-    const [detailPointPositions, setDetailPointPositions] = useState([
-        {x: 0, y: 0},
-        {x: 200, y: 200},
-    ])
+    const [sectionRefList, setSectionRefList] = useState([section1, section2, section3, section4, section5])
+
+    const [detailPointPositions, setDetailPointPositions] = useState([])
 
     return (
         <Suspense fallback={<LoadingScreen/>}>
@@ -71,11 +70,7 @@ function App() {
                         interactiveMode={interactiveMode}
                         setInteractiveMode={setInteractiveMode}
                         sectionIndex={sectionIndex}
-                        section1={section1}
-                        section2={section2}
-                        section3={section3}
-                        section4={section4}
-                        section5={section5}
+                        sectionRefList={sectionRefList}
                         setUnderlayTopic={setUnderlayTopic}
                         detailPointPositions={detailPointPositions}
                     />

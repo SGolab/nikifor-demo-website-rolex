@@ -10,11 +10,7 @@ export default function LowOverlay({
                                        interactiveMode,
                                        setInteractiveMode,
                                        sectionIndex,
-                                       section1,
-                                       section2,
-                                       section3,
-                                       section4,
-                                       section5,
+                                       sectionRefList,
                                        setUnderlayTopic,
                                        detailPointPositions
                                    }) {
@@ -27,7 +23,7 @@ export default function LowOverlay({
             />
 
             {enableScroll &&
-                <SectionPoints refs={[section1, section2, section3, section4, section5]}
+                <SectionPoints refs={sectionRefList}
                                currentSectionIndex={sectionIndex}/>
             }
 
@@ -36,11 +32,7 @@ export default function LowOverlay({
                 setScrollPercentage={setScrollPercentage}
                 interactiveMode={interactiveMode}
                 setInteractiveMode={setInteractiveMode}
-                section1={section1}
-                section2={section2}
-                section3={section3}
-                section4={section4}
-                section5={section5}
+                sectionRefList={sectionRefList}
             />
         </>
 
