@@ -1,4 +1,3 @@
-import DetailPoint from "./DetailPoint";
 import SectionPoints from "./SectionPoints";
 import Sections from "./Sections";
 import DetailPoints from "./DetailPoints";
