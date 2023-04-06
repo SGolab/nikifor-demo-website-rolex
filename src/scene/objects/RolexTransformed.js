@@ -8,6 +8,7 @@ import {useGLTF} from '@react-three/drei'
 import {useFrame, useThree} from "@react-three/fiber";
 import {toScreenPosition} from "../SceneUtils";
 import InteractivePart from "./InteractivePart";
+import * as THREE from 'three'
 
 export function Model(props) {
     const {nodes, materials} = useGLTF('/rolex/rolex-transformed.glb')
@@ -16,6 +17,12 @@ export function Model(props) {
     const detailPoint2Ref = useRef()
 
     const {gl} = useThree()
+
+    const metallicMaterial = new THREE.MeshPhysicalMaterial()
+    metallicMaterial.roughness = 0
+    metallicMaterial.metalness = .9
+    metallicMaterial.color = new THREE.Color(	0xC0C0C0)
+    // metallicMaterial.color = new THREE.Color(		0xDC143C)
 
     useFrame((state) => {
 
@@ -52,7 +59,7 @@ export function Model(props) {
                 <InteractivePart
                     onClick={() => props.setUnderlayTopic('latch')}
                     geometry={nodes.Plane008.geometry}
-                    material={materials.meetal}
+                    material={metallicMaterial}
                     position={[-2.18, 2.06, 0.14]}
                     rotation={[Math.PI / 2, 0.24, -Math.PI / 2]}/>
 
@@ -60,21 +67,20 @@ export function Model(props) {
                 <InteractivePart
                     onClick={() => props.setUnderlayTopic('crown')}
                     geometry={nodes.Circle010.geometry}
-                    material={materials.meetal}
-                    // material={new THREE.MeshStandardMaterial({color: 0xff0000})}
+                    material={metallicMaterial}
                     position={[0.8, 2.75, -1.33]}
                     rotation={[Math.PI / 2, 0.25, Math.PI]} scale={0.2}/>
 
 
                 <mesh geometry={nodes.Circle.geometry}
-                      material={materials.meetal}
+                      material={metallicMaterial}
                       position={[1.03, 2.78, 0.14]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]}/>
-                <mesh geometry={nodes.Circle001.geometry} material={materials.meetal} position={[1.03, 2.78, 0.14]}
+                <mesh geometry={nodes.Circle001.geometry} material={metallicMaterial} position={[1.03, 2.78, 0.14]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]}/>
-                <mesh geometry={nodes.Circle002.geometry} material={materials.meetal} position={[1.03, 2.78, 0.14]}
+                <mesh geometry={nodes.Circle002.geometry} material={metallicMaterial} position={[1.03, 2.78, 0.14]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]}/>
-                <mesh geometry={nodes.Circle003.geometry} material={materials.meetal}
+                <mesh geometry={nodes.Circle003.geometry} material={metallicMaterial}
                       position={[0.89, 3.48, -0.29]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.07}/>
                 <mesh geometry={nodes.Circle004.geometry} material={materials['meetal.001']}
@@ -95,7 +101,7 @@ export function Model(props) {
 
 
                 <group position={[0.88, 4.02, 0.14]} rotation={[Math.PI / 2, 0.25, -Math.PI / 2]}>
-                    <mesh geometry={nodes.Circle013_1.geometry} material={materials.meetal}/>
+                    <mesh geometry={nodes.Circle013_1.geometry} material={metallicMaterial}/>
                     <mesh geometry={nodes.Circle013_2.geometry} material={materials['Material.002']}/>
                 </group>
                 <mesh geometry={nodes.Circle012.geometry} material={materials['Material.002']}
@@ -114,35 +120,35 @@ export function Model(props) {
                       position={[1.18, 2.38, 0.85]} rotation={[-Math.PI / 2, -0.25, Math.PI / 2]} scale={-0.07}/>
                 <mesh geometry={nodes.Circle026.geometry} material={materials['Material.002']}
                       position={[1.25, 2.08, 0.55]} rotation={[-Math.PI / 2, -0.25, Math.PI / 2]} scale={-0.07}/>
-                <mesh geometry={nodes.Circle013.geometry} material={materials.meetal}
+                <mesh geometry={nodes.Circle013.geometry} material={metallicMaterial}
                       position={[0.97, 3.19, -0.58]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.07}/>
-                <mesh geometry={nodes.Circle015.geometry} material={materials.meetal}
+                <mesh geometry={nodes.Circle015.geometry} material={metallicMaterial}
                       position={[1.18, 2.38, -0.58]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.07}/>
-                <mesh geometry={nodes.Circle017.geometry} material={materials.meetal}
+                <mesh geometry={nodes.Circle017.geometry} material={metallicMaterial}
                       position={[1.25, 2.08, -0.28]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.07}/>
-                <mesh geometry={nodes.Circle019.geometry} material={materials.meetal} position={[0.89, 3.48, 0.55]}
+                <mesh geometry={nodes.Circle019.geometry} material={metallicMaterial} position={[0.89, 3.48, 0.55]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]} scale={-0.07}/>
-                <mesh geometry={nodes.Circle021.geometry} material={materials.meetal} position={[0.97, 3.19, 0.85]}
+                <mesh geometry={nodes.Circle021.geometry} material={metallicMaterial} position={[0.97, 3.19, 0.85]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]} scale={-0.07}/>
-                <mesh geometry={nodes.Circle023.geometry} material={materials.meetal} position={[1.18, 2.38, 0.85]}
+                <mesh geometry={nodes.Circle023.geometry} material={metallicMaterial} position={[1.18, 2.38, 0.85]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]} scale={-0.07}/>
-                <mesh geometry={nodes.Circle025.geometry} material={materials.meetal} position={[1.25, 2.08, 0.55]}
+                <mesh geometry={nodes.Circle025.geometry} material={metallicMaterial} position={[1.25, 2.08, 0.55]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]} scale={-0.07}/>
                 <mesh geometry={nodes.Circle027.geometry} material={materials['Material.001']}
                       position={[1.06, 2.79, 0.14]} rotation={[-Math.PI / 2, -0.25, Math.PI / 2]}/>
                 <group position={[1.13, 2.82, 0.15]} rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.05}>
-                    <mesh geometry={nodes.Circle042.geometry} material={materials.meetal}/>
+                    <mesh geometry={nodes.Circle042.geometry} material={metallicMaterial}/>
                     <mesh geometry={nodes.Circle042_1.geometry} material={materials['Material.002']}/>
                 </group>
                 <group position={[1.13, 2.82, 0.15]} rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.05}>
-                    <mesh geometry={nodes.Circle043.geometry} material={materials.meetal}/>
+                    <mesh geometry={nodes.Circle043.geometry} material={metallicMaterial}/>
                     <mesh geometry={nodes.Circle043_1.geometry} material={materials['Material.002']}/>
                 </group>
                 <group position={[1.13, 2.82, 0.15]} rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.05}>
-                    <mesh geometry={nodes.Circle044.geometry} material={materials.meetal}/>
+                    <mesh geometry={nodes.Circle044.geometry} material={metallicMaterial}/>
                     <mesh geometry={nodes.Circle044_1.geometry} material={materials['Material.002']}/>
                 </group>
                 <mesh geometry={nodes.Circle031.geometry} material={materials.chrome}
@@ -150,69 +156,69 @@ export function Model(props) {
                       rotation={[-Math.PI / 2, 1.09, 0]} scale={[0.83, 0.93, 0.83]}/>
                 <mesh geometry={nodes.Circle032.geometry} material={materials.chrome} position={[-0.16, 4.6, 0.75]}
                       rotation={[Math.PI / 2, -1.09, Math.PI]} scale={[-0.83, -0.93, -0.83]}/>
-                <mesh geometry={nodes.crown.geometry} material={materials.meetal} position={[-2.08, 1.22, 0.14]}
+                <mesh geometry={nodes.crown.geometry} material={metallicMaterial} position={[-2.08, 1.22, 0.14]}
                       rotation={[-Math.PI / 2, -0.47, -Math.PI / 2]} scale={[7.13, 3.8, 7.13]}/>
-                <mesh geometry={nodes.crown001.geometry} material={materials.meetal} position={[0.79, 2.8, -1.58]}
+                <mesh geometry={nodes.crown001.geometry} material={metallicMaterial} position={[0.79, 2.8, -1.58]}
                       rotation={[-1.59, -0.3, -0.01]} scale={-4.15}/>
-                <mesh geometry={nodes.Cube.geometry} material={materials.meetal} position={[0.82, 2.75, 0.14]}
+                <mesh geometry={nodes.Cube.geometry} material={metallicMaterial} position={[0.82, 2.75, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[1.52, 1.67, 1.67]}/>
-                <mesh geometry={nodes.Cube001.geometry} material={materials.meetal} position={[0.82, 2.75, 0.14]}
+                <mesh geometry={nodes.Cube001.geometry} material={metallicMaterial} position={[0.82, 2.75, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[1.52, 1.67, 1.67]}/>
-                <mesh geometry={nodes.Cube002.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube002.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube003.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube003.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube004.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube004.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]}/>
-                <mesh geometry={nodes.Cube005.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube005.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube006.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube006.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube007.geometry} material={materials.meetal} position={[0.58, 2.67, 0.14]}
+                <mesh geometry={nodes.Cube007.geometry} material={metallicMaterial} position={[0.58, 2.67, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube008.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube008.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube009.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube009.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube010.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube010.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube011.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube011.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube012.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube012.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube013.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube013.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube014.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube014.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube016.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube016.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube019.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube019.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cube020.geometry} material={materials.meetal} position={[0.57, 2.69, 0.14]}
+                <mesh geometry={nodes.Cube020.geometry} material={metallicMaterial} position={[0.57, 2.69, 0.14]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.12, 0.19, 0.12]}/>
-                <mesh geometry={nodes.Cylinder.geometry} material={materials.meetal} position={[1.11, 2.82, 0.15]}
+                <mesh geometry={nodes.Cylinder.geometry} material={metallicMaterial} position={[1.11, 2.82, 0.15]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={-0.02}/>
 
                 <mesh
                     geometry={nodes.Plane001.geometry}
-                    material={materials.meetal}
+                    material={metallicMaterial}
                     position={[-2.18, 2.06, 0.14]}
                     rotation={[Math.PI / 2, 0.24, -Math.PI / 2]}/>
 
                 <mesh
                     geometry={nodes.Plane002.geometry}
-                    material={materials.meetal}
+                    material={metallicMaterial}
                     position={[-1.82, 1.59, 0.13]}
                     rotation={[Math.PI / 2, 0.46, -Math.PI / 2]}
                     scale={[0.58, 1, 1]}/>
 
-                <mesh geometry={nodes.Plane003.geometry} material={materials.meetal}
+                <mesh geometry={nodes.Plane003.geometry} material={metallicMaterial}
                       position={[-1.82, 1.59, 0.13]} rotation={[Math.PI / 2, 0.46, -Math.PI / 2]} scale={[0.58, 1, 1]}/>
-                <mesh geometry={nodes.Plane004.geometry} material={materials.meetal} position={[-1.82, 1.59, 0.13]}
+                <mesh geometry={nodes.Plane004.geometry} material={metallicMaterial} position={[-1.82, 1.59, 0.13]}
                       rotation={[Math.PI / 2, 0.46, -Math.PI / 2]} scale={[0.58, 1, 1]}/>
                 <mesh geometry={nodes.Plane005.geometry} material={materials['Material.002']}
                       position={[0.85, 3.65, 0.12]} rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={0.03}/>
-                <mesh geometry={nodes.Plane006.geometry} material={materials.meetal} position={[0.85, 3.65, 0.12]}
+                <mesh geometry={nodes.Plane006.geometry} material={metallicMaterial} position={[0.85, 3.65, 0.12]}
                       rotation={[Math.PI / 2, 0.25, -Math.PI / 2]} scale={[0.91, 0.8, 0.8]}/>
                 <mesh geometry={nodes.Plane007.geometry} material={materials['glass.001']}
                       position={[1.2, 2.81, -0.54]}
@@ -223,9 +229,9 @@ export function Model(props) {
                       scale={[-0.14, -0.14, -0.05]}/>
                 <mesh geometry={nodes.Plane011.geometry} material={materials['Material.002']}
                       position={[1.26, 2.06, 0.14]} rotation={[Math.PI, 0, 1.32]} scale={[-0.14, -0.14, -0.04]}/>
-                <mesh geometry={nodes.Plane010.geometry} material={materials.meetal} position={[1.07, 2.78, 0.88]}
+                <mesh geometry={nodes.Plane010.geometry} material={metallicMaterial} position={[1.07, 2.78, 0.88]}
                       rotation={[-Math.PI / 2, -0.25, Math.PI / 2]} scale={[-1.09, -1.09, -1.08]}/>
-                <mesh geometry={nodes.Plane012.geometry} material={materials.meetal} position={[1.26, 2.06, 0.14]}
+                <mesh geometry={nodes.Plane012.geometry} material={metallicMaterial} position={[1.26, 2.06, 0.14]}
                       rotation={[-Math.PI, 0, 1.32]} scale={[-1.09, -1.09, -0.91]}/>
             </group>
         </group>

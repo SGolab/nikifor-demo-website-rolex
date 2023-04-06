@@ -39,5 +39,44 @@
 
 .highOverlay .btn:hover img {
     filter: invert(27%) sepia(76%) saturate(2272%) hue-rotate(348deg) brightness(75%) contrast(92%);
+}
 
+.logoContainer {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 10px 30px;
+    border-radius: 20px;
+
+    background-color: #050203;
+
+    color: antiquewhite;
+
+    display: flex;
+
+    align-items: center;
+}
+
+.logoText {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+.logoContainer h1 {
+    margin: 0;
+    font-size: 4rem;
+    line-height: 3rem;
+    letter-spacing: -4px;
+}
+
+.logoContainer h2 {
+    margin: 0;
+    font-size: .8rem;
+    align-self: end;
+}
+
+.logoContainer img {
+    height: 4rem;
 }

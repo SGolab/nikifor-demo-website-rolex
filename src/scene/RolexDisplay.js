@@ -16,9 +16,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
     const getRolexPosition = function () {
         const positions =
             [
-                {x: 1, y: -1, z: 0},
+                {x: 1, y: -1.7, z: 0},
                 {x: -1, y: -1.75, z: 0},
-                {x: 2.5, y: 0, z: 1},
+                {x: .75, y: -2, z: 0},
                 {x: 0, y: -1, z: 0},
                 {x: 0, y: 6, z: 0}
             ]
@@ -43,9 +43,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
 
         const rotations =
             [
-                {x: 0, y: (-Math.PI / 2), z: 0},
+                {x: 0, y: (-Math.PI / 1.7), z: 0},
                 {x: 0, y: (-Math.PI / 3), z: 0},
-                {x: 0, y: 0, z: Math.PI / 2},
+                {x: 0, y: (-Math.PI * 0.87), z: -.3},
                 {x: 0, y: (-Math.PI / 2), z: 0},
                 {x: 0, y: (-Math.PI / 2), z: 0}
             ]
@@ -73,9 +73,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
 
     const getRolexScale = function () {
         const scales = [
-            0.5,
+            0.7,
             .7,
-            1.2,
+            .9,
             0.4,
             0.4
         ]

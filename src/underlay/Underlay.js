@@ -51,6 +51,29 @@ export default function Underlay({topicName, setTransformX}) {
                         of the original model, unveiled in 2019.</p>
                 </div>
             }
+            {topicName.trim() === 'buy' &&
+                <div className={styles.section1ContentContainer}>
+                    <div className={styles.menuList}>
+                        <div>Buy</div>
+                        <div>Buy</div>
+                        <div>Buy</div>
+                        <div>Buy</div>
+                        <div>Buy</div>
+
+                    </div>
+                </div>
+            }
+            {topicName.trim() === 'menu' &&
+                <div className={styles.section1ContentContainer}>
+                    <div className={styles.menuList}>
+                        <div>Rolex Watches</div>
+                        <div>New Watches 2023</div>
+                        <div>WatchMaking</div>
+                        <div>Rolex and Sports</div>
+                        <div>Buying a Rolex</div>
+                    </div>
+                </div>
+            }
 
 
 

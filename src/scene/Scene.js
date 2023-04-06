@@ -2,6 +2,7 @@ import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Sparkles} from '@react-three/drei'
 import styles from "../App.module.css";
 import RolexDisplay from "./RolexDisplay";
+import NikiforText from "./objects/NikiforText";
 
 function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic}) {
 
@@ -10,11 +11,27 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setU
             <Canvas shadows camera={{position: [0, 0, 3]}} style={{zIndex: (interactiveMode ? '100' : '0')}}>
                 <color attach="background" args={['#050203']}/>
 
+                {/*<pointLight*/}
+                {/*    position={[-2, 10, 3]}*/}
+                {/*/>*/}
+
                 <pointLight
-                    position={[-2, 10, 3]}
+                    position={[-2, 5, 5]}
                 />
 
-                <ambientLight/>
+                <pointLight
+                    position={[0, 0, 5]}
+                />
+
+                <pointLight
+                    position={[0, 0, -5]}
+                />
+
+                <pointLight
+                    position={[-2, 5, 5]}
+                />
+
+                {/*<ambientLight/>*/}
 
                 <OrbitControls makeDefault
                                enablePan={false}
@@ -23,6 +40,8 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setU
                                minDistance={1}
                                maxDistance={5}
                 />
+
+                <NikiforText position={[0, 0, -5]}/>
 
                 <RolexDisplay
                     scrollPercentage={scrollPercentage}
@@ -35,8 +54,8 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setU
                     scale={15}
                     amount={100}
                     position={[0, 0, -2]}
-                    size={2}
-                    color={'#f54029'}/>
+                    size={1}
+                    color={'#E5B906'}/>
             </Canvas>
         </div>
     )

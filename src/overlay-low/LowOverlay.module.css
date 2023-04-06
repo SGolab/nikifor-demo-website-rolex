@@ -79,12 +79,15 @@
 }
 
 .section3ContentContainer {
+    position: absolute;
+    right: 150px;
+
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 50px;
 
-    width: 70%;
+    width: 30%;
 
     overflow: hidden;
 }

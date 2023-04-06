@@ -7,7 +7,8 @@
 
     width: 30%;
     justify-self: end;
-    background-image: linear-gradient(#782829 /*elegant red*/, antiquewhite);
+    background-color: #050203;
+    color: antiquewhite;
 
     padding-top: 50px;
     padding-left: 10px;
@@ -20,6 +21,8 @@
     position: absolute;
     left: 14px;
     top: 10px;
+
+    filter: invert(1);
 
     cursor: pointer;
 }
@@ -53,4 +56,34 @@
     text-align: justify;
 
     padding: 0 20px;
+}
+
+.menuList {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    width: 100%;
+    margin-top: 50px;
+
+    overflow: visible;
+}
+
+.menuList > div {
+    width: 100%;
+
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.menuList > div:hover {
+    color: darkgoldenrod;
 }
