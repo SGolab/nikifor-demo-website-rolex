@@ -1,6 +1,8 @@
 import {useFrame} from "@react-three/fiber";
 import * as THREE from "three";
 import RolexTransformed from "./objects/RolexTransformed";
+import {useEffect, useState} from "react";
+import {now} from "three/addons/libs/tween.module";
 
 export default function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic}) {
 
@@ -13,7 +15,14 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
         return null
     })
 
+    const [introTime, setIntroTime] = useState(0)
+
+    useEffect(() => {
+        setIntroTime(Date.now())
+    }, [])
+
     const getRolexPosition = function () {
+
         const positions =
             [
                 {x: 1, y: -1.7, z: 0},
@@ -22,6 +31,22 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
                 {x: 0, y: -1, z: 0},
                 {x: 0, y: 6, z: 0}
             ]
+
+        //intro
+        const duration = 1000
+        const elapsedTime = Date.now() - introTime
+
+        if (elapsedTime <= duration) {
+            const completeness = elapsedTime / duration
+            const easedCompleteness = 1 - (1 - completeness) * (1 - completeness)
+
+            return [
+                lerp(-2, positions[0].x, easedCompleteness),
+                lerp(2, positions[0].y, easedCompleteness),
+                lerp(1, positions[0].z, easedCompleteness),
+            ]
+        }
+        //intro end
 
         let index = Math.floor((scrollPercentage - 0.001) * 4)
         if (index < 0) {
@@ -33,9 +58,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
         const relativeCompleteness = (scrollPercentage - index * (1 / (positions.length - 1))) * (positions.length - 1) //should be between 0 and 1
 
         return [
-            getCurrentValue(startPosition.x, endPosition.x, relativeCompleteness),
-            getCurrentValue(startPosition.y, endPosition.y, relativeCompleteness),
-            getCurrentValue(startPosition.z, endPosition.z, relativeCompleteness)
+            lerp(startPosition.x, endPosition.x, relativeCompleteness),
+            lerp(startPosition.y, endPosition.y, relativeCompleteness),
+            lerp(startPosition.z, endPosition.z, relativeCompleteness)
         ]
     }
 
@@ -50,6 +75,22 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
                 {x: 0, y: (-Math.PI / 2), z: 0}
             ]
 
+        //intro
+        const duration = 1000
+        const elapsedTime = Date.now() - introTime
+
+        if (elapsedTime <= duration) {
+            const completeness = elapsedTime / duration
+            const easedCompleteness = 1 - (1 - completeness) * (1 - completeness)
+
+            return [
+                lerp(0, rotations[0].x, easedCompleteness),
+                lerp((-Math.PI * 0.87), rotations[0].y, easedCompleteness),
+                lerp(-.3, rotations[0].z, easedCompleteness),
+            ]
+        }
+        //intro end
+
         let index = Math.floor((scrollPercentage - 0.001) * 4)
         if (index < 0) {
             index = 0
@@ -60,13 +101,13 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
         const relativeCompleteness = (scrollPercentage - index * (1 / (rotations.length - 1))) * (rotations.length - 1) //should be between 0 and 1
 
         return [
-            getCurrentValue(startRotation.x, endRotation.x, relativeCompleteness),
-            getCurrentValue(startRotation.y, endRotation.y, relativeCompleteness),
-            getCurrentValue(startRotation.z, endRotation.z, relativeCompleteness)
+            lerp(startRotation.x, endRotation.x, relativeCompleteness),
+            lerp(startRotation.y, endRotation.y, relativeCompleteness),
+            lerp(startRotation.z, endRotation.z, relativeCompleteness)
         ]
     }
 
-    const getCurrentValue = function (startValue, endValue, relativeCompleteness) {
+    const lerp = function (startValue, endValue, relativeCompleteness) {
         return startValue + (endValue - startValue) * relativeCompleteness;
     }
 
