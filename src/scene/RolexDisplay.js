@@ -33,12 +33,12 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
             ]
 
         //intro
-        const duration = 1000
+        const duration = 2000
         const elapsedTime = Date.now() - introTime
 
         if (elapsedTime <= duration) {
             const completeness = elapsedTime / duration
-            const easedCompleteness = 1 - (1 - completeness) * (1 - completeness)
+            const easedCompleteness = 1 - (1 - completeness) * (1 - completeness) * (1 - completeness)
 
             return [
                 lerp(-2, positions[0].x, easedCompleteness),
@@ -76,12 +76,12 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
             ]
 
         //intro
-        const duration = 1000
+        const duration = 2000
         const elapsedTime = Date.now() - introTime
 
         if (elapsedTime <= duration) {
             const completeness = elapsedTime / duration
-            const easedCompleteness = 1 - (1 - completeness) * (1 - completeness)
+            const easedCompleteness = 1 - (1 - completeness) * (1 - completeness) * (1 - completeness)
 
             return [
                 lerp(0, rotations[0].x, easedCompleteness),
