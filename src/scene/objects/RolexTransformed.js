@@ -45,7 +45,10 @@ export function Model(props) {
 
                     {/*part bezel*/}
                     <InteractivePart
-                        onClick={() => props.setUnderlayTopic('bezel')}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            props.setUnderlayTopic('bezel')
+                        }}
                         geometry={nodes.Circle008_1.geometry}
                         material={materials['Material.003']}
                     />
@@ -57,7 +60,10 @@ export function Model(props) {
 
                 {/*part latch*/}
                 <InteractivePart
-                    onClick={() => props.setUnderlayTopic('latch')}
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        props.setUnderlayTopic('latch')
+                    }}
                     geometry={nodes.Plane008.geometry}
                     material={metallicMaterial}
                     position={[-2.18, 2.06, 0.14]}
@@ -65,7 +71,10 @@ export function Model(props) {
 
                 {/*part tension head*/}
                 <InteractivePart
-                    onClick={() => props.setUnderlayTopic('crown')}
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        props.setUnderlayTopic('crown')
+                    }}
                     geometry={nodes.Circle010.geometry}
                     material={metallicMaterial}
                     position={[0.8, 2.75, -1.33]}

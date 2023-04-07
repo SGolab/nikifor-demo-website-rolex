@@ -16,7 +16,10 @@ export default function InteractivePart(props) {
     return <mesh
         {...props}
         material={isHovered ? standardMaterial : props.material}
-        onPointerEnter={() => setIsHovered(true)}
+        onPointerEnter={(e) => {
+            e.stopPropagation()
+            setIsHovered(true)
+        }}
         onPointerLeave={() => setIsHovered(false)}
     />
 }
