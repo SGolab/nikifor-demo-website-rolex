@@ -1,5 +1,5 @@
 import {Canvas} from "@react-three/fiber";
-import {OrbitControls, Sparkles} from '@react-three/drei'
+import {Environment, OrbitControls, Sparkles} from '@react-three/drei'
 import styles from "../App.module.css";
 import RolexDisplay from "./RolexDisplay";
 import NikiforText from "./objects/NikiforText";
@@ -14,6 +14,8 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setU
                 {/*<pointLight*/}
                 {/*    position={[-2, 10, 3]}*/}
                 {/*/>*/}
+
+                <Environment preset="studio"/>
 
                 <pointLight
                     position={[-2, 5, 5]}
