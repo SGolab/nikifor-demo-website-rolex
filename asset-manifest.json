@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/nikifor-demo-website-rolex/static/css/main.43dce2fe.css",
+    "main.js": "/nikifor-demo-website-rolex/static/js/main.ad431453.js",
+    "index.html": "/nikifor-demo-website-rolex/index.html",
+    "main.43dce2fe.css.map": "/nikifor-demo-website-rolex/static/css/main.43dce2fe.css.map",
+    "main.ad431453.js.map": "/nikifor-demo-website-rolex/static/js/main.ad431453.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.43dce2fe.css",
+    "static/js/main.ad431453.js"
+  ]
+}
