@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/SGolab.github.io/nikifor-demo-website-rolex/static/css/main.43dce2fe.css",
-    "main.js": "/SGolab.github.io/nikifor-demo-website-rolex/static/js/main.ad431453.js",
+    "main.js": "/SGolab.github.io/nikifor-demo-website-rolex/static/js/main.9090af63.js",
     "index.html": "/SGolab.github.io/nikifor-demo-website-rolex/index.html",
     "main.43dce2fe.css.map": "/SGolab.github.io/nikifor-demo-website-rolex/static/css/main.43dce2fe.css.map",
-    "main.ad431453.js.map": "/SGolab.github.io/nikifor-demo-website-rolex/static/js/main.ad431453.js.map"
+    "main.9090af63.js.map": "/SGolab.github.io/nikifor-demo-website-rolex/static/js/main.9090af63.js.map"
   },
   "entrypoints": [
     "static/css/main.43dce2fe.css",
-    "static/js/main.ad431453.js"
+    "static/js/main.9090af63.js"
   ]
 }
