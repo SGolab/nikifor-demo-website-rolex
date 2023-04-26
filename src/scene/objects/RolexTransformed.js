@@ -22,6 +22,7 @@ export function Model(props) {
     metallicMaterial.roughness = 0
     metallicMaterial.metalness = 1
     metallicMaterial.color = new THREE.Color(	0xC0C0C0)
+    // metallicMaterial.color = new THREE.Color(		0xDC143C)
 
     useFrame((state) => {
 
