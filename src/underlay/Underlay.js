@@ -15,7 +15,7 @@ export default function Underlay({topicName, setTransformX}) {
             <div className={styles.exitBtn} onClick={() => {
                 setTransformX(0)
             }}>
-                <img src={'/icons/x-icon.png'} alt={'exit'}/>
+                <img src={'./icons/x-icon.png'} alt={'exit'}/>
             </div>
 
             {topicName.trim() === 'bezel' &&

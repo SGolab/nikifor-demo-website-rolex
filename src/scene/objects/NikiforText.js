@@ -6,7 +6,7 @@ import {TextGeometry} from 'three/examples/jsm/geometries/TextGeometry'
 extend({TextGeometry});
 
 export default function NikiforText() {
-    const font = useLoader(FontLoader, '/typefaces/optimer_bold.typeface.json')
+    const font = useLoader(FontLoader, './typefaces/optimer_bold.typeface.json')
     const config = useMemo(() => (
         {font, size: .3, height: .05}), [font])
 

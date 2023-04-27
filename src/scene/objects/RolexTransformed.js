@@ -11,7 +11,7 @@ import InteractivePart from "./InteractivePart";
 import * as THREE from 'three'
 
 export function Model(props) {
-    const {nodes, materials} = useGLTF('/rolex/rolex-transformed.glb')
+    const {nodes, materials} = useGLTF('./rolex/rolex-transformed.glb')
 
     const detailPoint1Ref = useRef()
     const detailPoint2Ref = useRef()

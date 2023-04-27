@@ -1,7 +1,7 @@
 {
   "name": "nikifor-flat-website-template",
   "version": "0.1.0",
-  "homepage": "SGolab.github.io/nikifor-demo-website-rolex",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@react-three/drei": "^9.58.5",

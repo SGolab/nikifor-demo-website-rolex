@@ -113,8 +113,8 @@ export default function Sections({
             <div ref={sectionRefList[4]}>
                 <Section animation={animations.appear}>
                     <div className={styles.section5ContentContainer}>
-                        <img src={'/photos/rolex-photo-1.jpg'} alt={'rolex-photo-1'}/>
-                        <img src={'/photos/rolex-photo-2.jpg'} alt={'rolex-photo-2'}/>
+                        <img src={'./photos/rolex-photo-1.jpg'} alt={'rolex-photo-1'}/>
+                        <img src={'./photos/rolex-photo-2.jpg'} alt={'rolex-photo-2'}/>
                     </div>
                 </Section>
             </div>
