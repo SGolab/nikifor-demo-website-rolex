@@ -52,11 +52,15 @@ export default function Sections({
                         <h1>Alchemy of form and function</h1>
                         <p>The Oyster bracelet is a perfect alchemy of form and function, aesthetics and
                             technology.</p>
-                        <p>First introduced in the late 1930s, this particularly robust and comfortable metal
-                            bracelet with its broad, flat three-piece links remains the most universal bracelet
-                            in
-                            the Oyster collection. For the Oyster Perpetual models the Oyster bracelet is fitted
-                            with an Oysterclasp.</p>
+                        {!isMobile &&
+                            <p>
+                                First introduced in the late 1930s, this particularly robust and comfortable metal
+                                bracelet with its broad, flat three-piece links remains the most universal bracelet
+                                in
+                                the Oyster collection. For the Oyster Perpetual models the Oyster bracelet is fitted
+                                with an Oysterclasp.
+                            </p>
+                        }
                     </div>
                 </Section>
             </div>

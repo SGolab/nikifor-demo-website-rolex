@@ -153,7 +153,8 @@
 @media (max-width: 600px) {
 
     .section1TextContainer {
-        left: 10px;
+        left: 0;
+        padding: 0 10px;
         top: 10%;
 
         width: auto;
@@ -165,9 +166,14 @@
     }
 
     .section1TextContainer h1 {
-        font-size: 5rem;
+        font-size: 4rem;
 
         margin: 0;
+        margin-top: 10px;
+    }
+
+    .section1TextContainer p {
+        width: 90%;
     }
 
     .section2TextContainer {
@@ -180,20 +186,41 @@
     }
 
     .section2TextContainer h1 {
-        font-size: 4rem;
+        font-size: 3rem;
         line-height: .85em;
+
         margin: 0;
+        margin-top: 10px;
+
+        width: 80%;
+
+        align-self: end;
     }
 
     .section3ContentContainer {
-        right: 10%;
+        right: 15%;
 
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 0;
 
         width: min-content;
 
         overflow: hidden;
+    }
+
+    .section3ContentContainer .gridTile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section3ContentContainer .gridTile h3 {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+    }
+
+    .section3ContentContainer .gridTile p {
+        margin: 0;
+        margin-top: 5px;
     }
 
     .section5ContentContainer {

@@ -6,7 +6,7 @@ export default function HighOverlay({underLayTopic, setUnderlayTopic}) {
         <div className={styles.highOverlay}>
 
             <div className={styles.logoContainer}>
-                <img src={'./rolex-logo.webp'}/>
+                <img src={'./nikifor-logo.png'} alt={'nikifor-logo'}/>
                 <div className={styles.logoText}>
                     <h1>ROLEX</h1>
                     <h2>POWERED BY NIKIFOR</h2>
@@ -15,7 +15,7 @@ export default function HighOverlay({underLayTopic, setUnderlayTopic}) {
 
             <div className={styles.btnContainer}>
                 <div className={styles.btn} onClick={() => {
-                    if (underLayTopic === 'buy') {
+                    if (underLayTopic.trim() === 'buy') {
                         setUnderlayTopic('')
                     } else {
                         setUnderlayTopic('buy')
