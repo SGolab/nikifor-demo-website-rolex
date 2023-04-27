@@ -51,7 +51,10 @@ function App() {
             <div className={styles.mainContainer}>
 
                 <Underlay topicName={underlayTopic} sectionIndex={sectionIndex} setTransformX={setTransformX}/>
-                <HighOverlay setUnderlayTopic={setUnderlayTopic}/>
+                <HighOverlay
+                    underLayTopic={underlayTopic}
+                    setUnderlayTopic={setUnderlayTopic}
+                />
 
                 <TransformableByX transformX={transformX}>
 

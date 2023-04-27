@@ -3,8 +3,71 @@ import * as THREE from "three";
 import RolexTransformed from "./objects/RolexTransformed";
 import {useEffect, useState} from "react";
 import {now} from "three/addons/libs/tween.module";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic}) {
+
+    const isMobile = useIsMobile()
+
+    const mobileSettings = [
+        {
+            position: {x: .35, y: -2.3, z: 0},
+            rotation: {x: -.3, y: (-Math.PI / 1.7), z: 0},
+            scale: 0.7
+        },
+        {
+            position: {x: -.3, y: -2.4, z: 0},
+            rotation: {x: 0, y: (-Math.PI / 3), z: 0},
+            scale: 0.7
+        },
+        {
+            position: {x: .4, y: -1.8, z: 0},
+            rotation: {x: 0, y: (-Math.PI * 0.85), z: -.3},
+            scale: 0.7
+        },
+        {
+            position: {x: 0, y: -1, z: 0},
+            rotation: {x: 0, y: (-Math.PI / 2), z: 0},
+            scale: 0.4
+        },
+        {
+            position: {x: 0, y: 6, z: 0},
+            rotation: {x: 0, y: (-Math.PI / 2), z: 0},
+            scale: 0.4
+        },
+    ]
+
+    const desktopSettings = [
+        {
+            position: {x: 1, y: -1.7, z: 0},
+            rotation: {x: 0, y: (-Math.PI / 1.7), z: 0},
+            scale: 0.7
+        },
+        {
+            position: {x: -1, y: -1.75, z: 0},
+            rotation: {x: 0, y: (-Math.PI / 3), z: 0},
+            scale: 0.7
+        },
+        {
+            position: {x: .75, y: -2, z: 0},
+            rotation: {x: 0, y: (-Math.PI * 0.87), z: -.3},
+            scale: 0.9
+        },
+        {
+            position: {x: 0, y: -1, z: 0},
+            rotation: {x: 0, y: (-Math.PI / 2), z: 0},
+            scale: 0.4
+        },
+        {
+            position: {x: 0, y: 6, z: 0},
+            rotation: {x: 0, y: (-Math.PI / 2), z: 0},
+            scale: 0.4
+        },
+    ]
+
+
+    const rolexSettings = isMobile ? mobileSettings : desktopSettings
+
 
     useFrame(state => { //makes sure the camera returns to initial position when interactive mode turns off
         if (!interactiveMode) {
@@ -23,15 +86,6 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
 
     const getRolexPosition = function () {
 
-        const positions =
-            [
-                {x: 1, y: -1.7, z: 0},
-                {x: -1, y: -1.75, z: 0},
-                {x: .75, y: -2, z: 0},
-                {x: 0, y: -1, z: 0},
-                {x: 0, y: 6, z: 0}
-            ]
-
         //intro
         const duration = 2000
         const elapsedTime = Date.now() - introTime
@@ -41,9 +95,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
             const easedCompleteness = 1 - (1 - completeness) * (1 - completeness) * (1 - completeness)
 
             return [
-                lerp(-2, positions[0].x, easedCompleteness),
-                lerp(2, positions[0].y, easedCompleteness),
-                lerp(1, positions[0].z, easedCompleteness),
+                lerp(-2, rolexSettings[0].position.x, easedCompleteness),
+                lerp(2, rolexSettings[0].position.y, easedCompleteness),
+                lerp(1, rolexSettings[0].position.z, easedCompleteness),
             ]
         }
         //intro end
@@ -53,9 +107,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
             index = 0
         }
 
-        const startPosition = positions[index]
-        const endPosition = positions[index + 1]
-        const relativeCompleteness = (scrollPercentage - index * (1 / (positions.length - 1))) * (positions.length - 1) //should be between 0 and 1
+        const startPosition = rolexSettings[index].position
+        const endPosition = rolexSettings[index + 1].position
+        const relativeCompleteness = (scrollPercentage - index * (1 / (rolexSettings.length - 1))) * (rolexSettings.length - 1) //should be between 0 and 1
 
         return [
             lerp(startPosition.x, endPosition.x, relativeCompleteness),
@@ -65,15 +119,15 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
     }
 
     const getRolexRotation = function () {
-
-        const rotations =
-            [
-                {x: 0, y: (-Math.PI / 1.7), z: 0},
-                {x: 0, y: (-Math.PI / 3), z: 0},
-                {x: 0, y: (-Math.PI * 0.87), z: -.3},
-                {x: 0, y: (-Math.PI / 2), z: 0},
-                {x: 0, y: (-Math.PI / 2), z: 0}
-            ]
+        //
+        // const rotations =
+        //     [
+        //         {x: 0, y: (-Math.PI / 1.7), z: 0},
+        //         {x: 0, y: (-Math.PI / 3), z: 0},
+        //         {x: 0, y: (-Math.PI * 0.87), z: -.3},
+        //         {x: 0, y: (-Math.PI / 2), z: 0},
+        //         {x: 0, y: (-Math.PI / 2), z: 0}
+        //     ]
 
         //intro
         const duration = 2000
@@ -84,9 +138,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
             const easedCompleteness = 1 - (1 - completeness) * (1 - completeness) * (1 - completeness)
 
             return [
-                lerp(0, rotations[0].x, easedCompleteness),
-                lerp((-Math.PI * 0.87), rotations[0].y, easedCompleteness),
-                lerp(-.3, rotations[0].z, easedCompleteness),
+                lerp(0, rolexSettings[0].rotation.x, easedCompleteness),
+                lerp((-Math.PI * 0.87), rolexSettings[0].rotation.y, easedCompleteness),
+                lerp(-.3, rolexSettings[0].rotation.z, easedCompleteness),
             ]
         }
         //intro end
@@ -96,9 +150,9 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
             index = 0
         }
 
-        const startRotation = rotations[index]
-        const endRotation = rotations[index + 1]
-        const relativeCompleteness = (scrollPercentage - index * (1 / (rotations.length - 1))) * (rotations.length - 1) //should be between 0 and 1
+        const startRotation = rolexSettings[index].rotation
+        const endRotation = rolexSettings[index + 1].rotation
+        const relativeCompleteness = (scrollPercentage - index * (1 / (rolexSettings.length - 1))) * (rolexSettings.length - 1) //should be between 0 and 1
 
         return [
             lerp(startRotation.x, endRotation.x, relativeCompleteness),
@@ -113,22 +167,15 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
 
 
     const getRolexScale = function () {
-        const scales = [
-            0.7,
-            .7,
-            .9,
-            0.4,
-            0.4
-        ]
 
         let index = Math.floor((scrollPercentage - 0.001) * 4)
         if (index < 0) {
             index = 0
         }
 
-        const startScale = scales[index]
-        const endScale = scales[index + 1]
-        const relativeCompleteness = (scrollPercentage - index * (1 / (scales.length - 1))) * (scales.length - 1) //should be between 0 and 1
+        const startScale = rolexSettings[index].scale
+        const endScale = rolexSettings[index + 1].scale
+        const relativeCompleteness = (scrollPercentage - index * (1 / (rolexSettings.length - 1))) * (rolexSettings.length - 1) //should be between 0 and 1
 
         return startScale + (endScale - startScale) * relativeCompleteness
     }

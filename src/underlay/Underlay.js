@@ -1,12 +1,14 @@
 import styles from "./Underlay.module.css";
 import {useEffect} from "react";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function Underlay({topicName, setTransformX}) {
 
+    const isMobile = useIsMobile()
+    const OFFSET = isMobile ? -75 : -30 //how much space in percents underlay take
+
     useEffect(() => {
-        if (topicName) {
-            setTransformX(-30)
-        }
+        setTransformX(topicName.trim() ? OFFSET : 0)
     }, [topicName])
 
     return (
@@ -74,7 +76,6 @@ export default function Underlay({topicName, setTransformX}) {
                     </div>
                 </div>
             }
-
 
 
         </div>

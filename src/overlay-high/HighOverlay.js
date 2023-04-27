@@ -1,6 +1,6 @@
 import styles from "./HighOverlay.module.css";
 
-export default function HighOverlay({setUnderlayTopic}) {
+export default function HighOverlay({underLayTopic, setUnderlayTopic}) {
 
     return (
         <div className={styles.highOverlay}>
@@ -14,10 +14,22 @@ export default function HighOverlay({setUnderlayTopic}) {
             </div>
 
             <div className={styles.btnContainer}>
-                <div className={styles.btn} onClick={() => setUnderlayTopic('buy')}>
+                <div className={styles.btn} onClick={() => {
+                    if (underLayTopic === 'buy') {
+                        setUnderlayTopic('')
+                    } else {
+                        setUnderlayTopic('buy')
+                    }
+                }}>
                     <img src={'./icons/buy-btn.png'} alt={'buy-btn'}/>
                 </div>
-                <div className={styles.btn} onClick={() => setUnderlayTopic('menu')}>
+                <div className={styles.btn} onClick={() => {
+                    if (underLayTopic.trim() !== '') {
+                        setUnderlayTopic('')
+                    } else {
+                        setUnderlayTopic('menu')
+                    }
+                }}>
                     <img src={'./icons/menu-btn.png'} alt={'menu-btn'}/>
                 </div>
             </div>

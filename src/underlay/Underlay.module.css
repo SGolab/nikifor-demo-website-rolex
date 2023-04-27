@@ -51,8 +51,6 @@
 }
 
 .section1ContentContainer p {
-    /*font-size: .8rem;*/
-
     text-align: justify;
 
     padding: 0 20px;
@@ -86,4 +84,12 @@
 
 .menuList > div:hover {
     color: darkgoldenrod;
+}
+
+@media (max-width: 600px) {
+
+    .underlay {
+        width: 75%;
+    }
+
 }

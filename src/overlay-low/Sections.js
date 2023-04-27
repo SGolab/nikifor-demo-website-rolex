@@ -1,6 +1,7 @@
 import styles from "./LowOverlay.module.css";
 import Section from "./Section";
 import {useEffect, useState} from "react";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function Sections({
                                      enableScroll,
@@ -11,6 +12,8 @@ export default function Sections({
                                  }) {
 
     const [animations, setAnimations] = useState({})
+
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         fetch('./animations.json')
@@ -73,15 +76,19 @@ export default function Sections({
                             <h3>Winding</h3>
                             <p>Bidirectional self-winding via Perpetual rotor</p>
                         </div>
-                        <div className={styles.gridTile}>
-                            <h3>Oscillator</h3>
-                            <p>Paramagnetic blue Parachrom hairspring. High-performance Paraflex shock
-                                absorbers</p>
-                        </div>
-                        <div className={styles.gridTile}>
-                            <h3>Precision</h3>
-                            <p>-2/+2 sec/day, after casing</p>
-                        </div>
+                        {!isMobile &&
+                            <>
+                                <div className={styles.gridTile}>
+                                    <h3>Oscillator</h3>
+                                    <p>Paramagnetic blue Parachrom hairspring. High-performance Paraflex shock
+                                        absorbers</p>
+                                </div>
+                                <div className={styles.gridTile}>
+                                    <h3>Precision</h3>
+                                    <p>-2/+2 sec/day, after casing</p>
+                                </div>
+                            </>
+                        }
                     </div>
                 </Section>
             </div>

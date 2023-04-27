@@ -8,7 +8,7 @@
     overflow: visible;
 }
 
-.highOverlay .btnContainer {
+.btnContainer {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -79,4 +79,37 @@
 
 .logoContainer img {
     height: 4rem;
+}
+
+@media (max-width: 600px) {
+
+    .btnContainer {
+        top: 0;
+        right: 0;
+
+        padding: 10px 10px;
+        border-radius: 10px;
+
+        gap: 25px;
+
+        background-color: #050203;
+    }
+
+    .logoContainer {
+        top: 0;
+        left: 0;
+
+        padding: 0 10px;
+        border-radius: 10px;
+    }
+
+    .logoText h1 {
+        font-size: 2rem;
+        line-height: 1.5rem;
+    }
+
+    .logoContainer img {
+        height: 2rem;
+    }
+
 }
