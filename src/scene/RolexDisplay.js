@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {now} from "three/addons/libs/tween.module";
 import useIsMobile from "../hooks/useIsMobile";
 
-export default function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic}) {
+export default function RolexDisplay({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic, setIsIntro}) {
 
     const isMobile = useIsMobile()
 
@@ -65,16 +65,13 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
         },
     ]
 
-
     const rolexSettings = isMobile ? mobileSettings : desktopSettings
-
 
     useFrame(state => { //makes sure the camera returns to initial position when interactive mode turns off
         if (!interactiveMode) {
             state.camera.position.lerp(new THREE.Vector3(0, 0, 3), 0.2)
             state.camera.updateProjectionMatrix()
         }
-
         return null
     })
 
@@ -82,6 +79,7 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
 
     useEffect(() => {
         setIntroTime(Date.now())
+        setTimeout(() => setIsIntro(false), 2000)
     }, [])
 
     const getRolexPosition = function () {
@@ -100,6 +98,7 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
                 lerp(1, rolexSettings[0].position.z, easedCompleteness),
             ]
         }
+
         //intro end
 
         let index = Math.floor((scrollPercentage - 0.001) * 4)
@@ -119,15 +118,6 @@ export default function RolexDisplay({scrollPercentage, interactiveMode, setDeta
     }
 
     const getRolexRotation = function () {
-        //
-        // const rotations =
-        //     [
-        //         {x: 0, y: (-Math.PI / 1.7), z: 0},
-        //         {x: 0, y: (-Math.PI / 3), z: 0},
-        //         {x: 0, y: (-Math.PI * 0.87), z: -.3},
-        //         {x: 0, y: (-Math.PI / 2), z: 0},
-        //         {x: 0, y: (-Math.PI / 2), z: 0}
-        //     ]
 
         //intro
         const duration = 2000

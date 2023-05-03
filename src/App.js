@@ -45,6 +45,8 @@ function App() {
 
     const [detailPointPositions, setDetailPointPositions] = useState([])
 
+    const [isIntro, setIsIntro] = useState(true)
+
     return (
         <Suspense fallback={<LoadingScreen/>}>
 
@@ -64,10 +66,11 @@ function App() {
                         setInteractiveMode={setInteractiveMode}
                         setDetailPointPositions={setDetailPointPositions}
                         setUnderlayTopic={setUnderlayTopic}
+                        setIsIntro={setIsIntro}
                     />
 
                     <LowOverlay
-                        enableScroll={transformX === 0 && !interactiveMode}
+                        enableScroll={transformX === 0 && !interactiveMode && !isIntro}
                         scrollPercentage={scrollPercentage}
                         setScrollPercentage={setScrollPercentage}
                         interactiveMode={interactiveMode}
@@ -76,6 +79,7 @@ function App() {
                         sectionRefList={sectionRefList}
                         setUnderlayTopic={setUnderlayTopic}
                         detailPointPositions={detailPointPositions}
+                        // isIntro={isIntro}
                     />
 
                 </TransformableByX>

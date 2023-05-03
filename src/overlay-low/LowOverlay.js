@@ -11,7 +11,8 @@ export default function LowOverlay({
                                        sectionIndex,
                                        sectionRefList,
                                        setUnderlayTopic,
-                                       detailPointPositions
+                                       detailPointPositions,
+                                       isIntro
                                    }) {
     return (
         <>
@@ -32,6 +33,7 @@ export default function LowOverlay({
                 interactiveMode={interactiveMode}
                 setInteractiveMode={setInteractiveMode}
                 sectionRefList={sectionRefList}
+                isIntro={isIntro}
             />
         </>
 

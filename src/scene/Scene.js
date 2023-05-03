@@ -4,16 +4,12 @@ import styles from "../App.module.css";
 import RolexDisplay from "./RolexDisplay";
 import NikiforText from "./objects/NikiforText";
 
-function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic}) {
+function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setUnderlayTopic, setIsIntro}) {
 
     return (
         <div className={styles.sceneContainer}>
             <Canvas shadows camera={{position: [0, 0, 3]}} style={{zIndex: (interactiveMode ? '100' : '0')}}>
                 <color attach="background" args={['#050203']}/>
-
-                {/*<pointLight*/}
-                {/*    position={[-2, 10, 3]}*/}
-                {/*/>*/}
 
                 <Environment preset="studio"/>
 
@@ -33,8 +29,6 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setU
                     position={[-2, 5, 5]}
                 />
 
-                {/*<ambientLight/>*/}
-
                 <OrbitControls makeDefault
                                enablePan={false}
                                zoomSpeed={0.5}
@@ -50,6 +44,7 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setU
                     interactiveMode={interactiveMode}
                     setDetailPointPositions={setDetailPointPositions}
                     setUnderlayTopic={setUnderlayTopic}
+                    setIsIntro={setIsIntro}
                 />
 
                 <Sparkles
