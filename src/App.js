@@ -1,5 +1,5 @@
 import styles from './App.module.css';
-import {Suspense, useEffect, useRef, useState} from "react";
+import {Suspense, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import Scene from "./scene/Scene";
 import LoadingScreen from "./LoadingScreen";
 import HighOverlay from "./overlay-high/HighOverlay";
@@ -43,6 +43,10 @@ function App() {
 
     const [sectionRefList, setSectionRefList] = useState([section1, section2, section3, section4, section5])
 
+    const scrollToSection = useCallback((index) => {
+        sectionRefList[index].current.scrollIntoView({behavior: "smooth"})
+    }, [sectionRefList])
+
     const [detailPointPositions, setDetailPointPositions] = useState([])
 
     const [isIntro, setIsIntro] = useState(true)
@@ -52,7 +56,12 @@ function App() {
 
             <div className={styles.mainContainer}>
 
-                <Underlay topicName={underlayTopic} sectionIndex={sectionIndex} setTransformX={setTransformX}/>
+                <Underlay
+                    topicName={underlayTopic}
+                    sectionIndex={sectionIndex}
+                    setTransformX={setTransformX}
+                />
+
                 <HighOverlay
                     underLayTopic={underlayTopic}
                     setUnderlayTopic={setUnderlayTopic}
@@ -79,7 +88,8 @@ function App() {
                         sectionRefList={sectionRefList}
                         setUnderlayTopic={setUnderlayTopic}
                         detailPointPositions={detailPointPositions}
-                        // isIntro={isIntro}
+                        scrollToSection={scrollToSection}
+                        sectionsAmount={sectionRefList.length}
                     />
 
                 </TransformableByX>

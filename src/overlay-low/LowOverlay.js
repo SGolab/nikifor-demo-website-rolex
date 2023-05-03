@@ -1,6 +1,7 @@
 import SectionPoints from "./SectionPoints";
 import Sections from "./Sections";
 import DetailPoints from "./DetailPoints";
+import {useState} from "react";
 
 export default function LowOverlay({
                                        enableScroll,
@@ -12,8 +13,10 @@ export default function LowOverlay({
                                        sectionRefList,
                                        setUnderlayTopic,
                                        detailPointPositions,
-                                       isIntro
+                                       scrollToSection,
+                                       sectionsAmount
                                    }) {
+
     return (
         <>
 
@@ -23,8 +26,11 @@ export default function LowOverlay({
             />
 
             {enableScroll &&
-                <SectionPoints refs={sectionRefList}
-                               currentSectionIndex={sectionIndex}/>
+                <SectionPoints
+                               currentSectionIndex={sectionIndex}
+                               scrollToSection={scrollToSection}
+                               sectionsAmount={sectionsAmount}
+                />
             }
 
             <Sections
@@ -33,7 +39,6 @@ export default function LowOverlay({
                 interactiveMode={interactiveMode}
                 setInteractiveMode={setInteractiveMode}
                 sectionRefList={sectionRefList}
-                isIntro={isIntro}
             />
         </>
 
