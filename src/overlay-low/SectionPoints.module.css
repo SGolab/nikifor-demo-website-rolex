@@ -8,6 +8,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    animation: appear 1s both;
 }
 
 .point {
@@ -17,4 +19,13 @@
     border-radius: 100px;
 
     cursor: pointer;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
