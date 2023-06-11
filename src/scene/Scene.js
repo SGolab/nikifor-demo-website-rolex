@@ -11,7 +11,7 @@ function Scene({scrollPercentage, interactiveMode, setDetailPointPositions, setU
             <Canvas shadows camera={{position: [0, 0, 3]}} style={{zIndex: (interactiveMode ? '100' : '0')}}>
                 <color attach="background" args={['#050203']}/>
 
-                <Environment preset="studio"/>
+                <Environment files={'./studio_small_03_1k.hdr'}/>
 
                 <pointLight
                     position={[-2, 5, 5]}
